@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="xtal-props">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `xtal-props`
+     * view / edit an object.  Debug web components
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class XtalProps extends Polymer.Element {
+      static get is() { return 'xtal-props'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'xtal-props'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(XtalProps.is, XtalProps);
+  </script>
+</dom-module>
