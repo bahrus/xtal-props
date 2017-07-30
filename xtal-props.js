@@ -47,9 +47,6 @@ var xtal;
                     //     objToEdit[name] = e.srcElement[name];
                     // });
                     const polyProps = CE_ProtoType.properties;
-                    console.log({
-                        polyProps: polyProps
-                    });
                     const ce = e.srcElement;
                     if (polyProps) {
                         const primitiveCEProps = [];
@@ -58,7 +55,9 @@ var xtal;
                             const newProp = {
                                 name: key,
                                 val: ce[key],
+                                type: polyProp.type.toString(),
                             };
+                            console.log(newProp);
                             primitiveCEProps.push(newProp);
                         }
                         this.primitiveCEProps = primitiveCEProps;

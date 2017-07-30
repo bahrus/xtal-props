@@ -1,9 +1,14 @@
 module xtal.elements{
+    interface PropType{
+        name: string,
+        val: any,
+        type: string
+    }
     interface IXtalPropsProperties{
         debug: boolean | polymer.PropObjectType,
         elementName: string | polymer.PropObjectType,
         watch: any | polymer.PropObjectType,
-        primitiveCEProps: any[] | polymer.PropObjectType,
+        primitiveCEProps: PropType[] | polymer.PropObjectType,
     }
 
     function initXtalProps(){
@@ -51,9 +56,6 @@ module xtal.elements{
                 //     objToEdit[name] = e.srcElement[name];
                 // });
                 const polyProps = CE_ProtoType.properties as {[key: string] : polymer.PropObjectType};
-                console.log({
-                    polyProps: polyProps
-                });
                 const ce = e.srcElement;
                 if(polyProps){
                     const primitiveCEProps = [];
@@ -62,7 +64,9 @@ module xtal.elements{
                         const newProp = {
                             name: key,
                             val: ce[key],
+                            type: polyProp.type.toString(),
                         }
+                        console.log(newProp);
                         primitiveCEProps.push(newProp);
                     }
                     this.primitiveCEProps = primitiveCEProps;
@@ -81,7 +85,7 @@ module xtal.elements{
                             const tn = e.srcElement.tagName.toLowerCase();
                             
                             if(tn.indexOf('-') > -1){
-                                const CE_ProtoType = customElements.get(tn;
+                                const CE_ProtoType = customElements.get(tn);
                                 if(CE_ProtoType){
                                     console.log('enableDebug');
                                     this.elementName = tn;
