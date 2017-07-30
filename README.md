@@ -26,6 +26,7 @@ View / Edit an object.  Debug web components
   - [ ]  Edit support for string, boolean, number properties.
   - [ ] Edit support nested child object properties.
   - [ ] Edit support for array properties.
+  - [ ] Support closing debug panel
 
 ## Install the Polymer-CLI
 
