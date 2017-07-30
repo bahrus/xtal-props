@@ -13,9 +13,12 @@ View / Edit an object.  Debug web components
 - [ ] Auto generate an interface based on the static polymer properties.
 - [ ] Provide similar support for other custom element libraries.
 - [x] Open up an object editor / viewer after ctrl-clicking on a custom element.
-- [x] Readonly support for string, boolean, number properties.
-- [ ] Support nested child object properties.
-- [ ] Support array properties.
+- [x] Readonly support for string, boolean, number properties (Polymer components only).
+- [ ] Readonly support nested child object properties.
+- [ ] Readonly support for array properties.
+- []  Edit support for string, boolean, number properties.
+- [ ] Edit support nested child object properties.
+- [ ] Edit support for array properties.
 
 ## Install the Polymer-CLI
 
