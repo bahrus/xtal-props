@@ -31,6 +31,9 @@ var xtal;
                         },
                         primitiveCEProps: {
                             type: Array,
+                        },
+                        elementName: {
+                            type: String
                         }
                     };
                 }
@@ -70,12 +73,12 @@ var xtal;
                         const _this = this;
                         document.body.addEventListener('click', e => {
                             if (e.ctrlKey) {
-                                const tn = e.srcElement.tagName;
-                                console.log(tn);
+                                const tn = e.srcElement.tagName.toLowerCase();
                                 if (tn.indexOf('-') > -1) {
-                                    const CE_ProtoType = customElements.get(tn.toLowerCase());
+                                    const CE_ProtoType = customElements.get(tn);
                                     if (CE_ProtoType) {
                                         console.log('enableDebug');
+                                        this.elementName = tn;
                                         _this.displayDebugView(e, CE_ProtoType);
                                     }
                                 }

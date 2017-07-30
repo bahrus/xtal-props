@@ -1,6 +1,7 @@
 module xtal.elements{
     interface IXtalPropsProperties{
         debug: boolean | polymer.PropObjectType,
+        elementName: string | polymer.PropObjectType,
         watch: any | polymer.PropObjectType,
         primitiveCEProps: any[] | polymer.PropObjectType,
     }
@@ -17,7 +18,7 @@ module xtal.elements{
         * @demo demo/index.html
         */
         class XtalProps  extends Polymer.Element implements IXtalPropsProperties{
-            debug: boolean;watch: any;primitiveCEProps: any[];
+            debug: boolean;watch: any;primitiveCEProps: any[];elementName:string;
             static get is(){return 'xtal-props';}
             static get properties() : IXtalPropsProperties{
                 return {
@@ -34,6 +35,9 @@ module xtal.elements{
                     },
                     primitiveCEProps:{
                         type: Array,
+                    },
+                    elementName:{
+                        type: String
                     }
                 }
             }
@@ -74,12 +78,13 @@ module xtal.elements{
                     const _this = this;
                     document.body.addEventListener('click', e =>{
                         if(e.ctrlKey){
-                            const tn = e.srcElement.tagName;
-                            console.log(tn);
+                            const tn = e.srcElement.tagName.toLowerCase();
+                            
                             if(tn.indexOf('-') > -1){
-                                const CE_ProtoType = customElements.get(tn.toLowerCase());
+                                const CE_ProtoType = customElements.get(tn;
                                 if(CE_ProtoType){
                                     console.log('enableDebug');
+                                    this.elementName = tn;
                                     _this.displayDebugView(e, CE_ProtoType);
                                 }
                             }

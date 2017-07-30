@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/elements/dom-if.html">
 <link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 <dom-module id="xtal-props">
   <template>
@@ -8,10 +9,16 @@
         display: block;
       }
     </style>
-    <h2>Hello!</h2>
-    <template is="dom-repeat" items="[[primitiveCEProps]]">
-      [[item.name]], [[item.val]]
+    <h2>[[elementName]]</h2>
+    <template is="dom-if" if="[[debug]]">
+      <template is="dom-repeat" items="[[primitiveCEProps]]">
+        <div class="primitive prop">
+          <label>[[item.name]]:&nbsp;</label><input readonly type="text" value$="[[item.val]]">
+        </div>
+        
+      </template>
     </template>
+
   </template>
 
   <script src="xtal-props.js"></script>
