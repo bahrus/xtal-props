@@ -14,7 +14,6 @@
     </style>
     <fieldset>
       <legend>[[name]]</legend>
-      <template is="dom-if" if="[[debug]]">
         <template is="dom-repeat" items="[[bindableProps]]">
           <div class="primitive prop">
             <if-diff if lhs="[[item.type]]" equals rhs="String">
@@ -34,7 +33,6 @@
             </if-diff>
           </div>
         </template>
-      </template>
     </fieldset>
 
 
