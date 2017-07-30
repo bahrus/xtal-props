@@ -55,7 +55,7 @@ var xtal;
                             const newProp = {
                                 name: key,
                                 val: ce[key],
-                                type: polyProp.type.toString(),
+                                type: polyProp.type.name,
                             };
                             console.log(newProp);
                             primitiveCEProps.push(newProp);

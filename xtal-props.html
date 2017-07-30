@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../polymer/lib/elements/dom-if.html">
+ <link rel="import" href="../polymer/lib/elements/dom-if.html"> 
+<link rel="import" href="../if-diff/if-diff.html">
 <link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <dom-module id="xtal-props">
   <template>
     <style>
@@ -15,11 +17,19 @@
       <template is="dom-if" if="[[debug]]">
         <template is="dom-repeat" items="[[primitiveCEProps]]">
           <div class="primitive prop">
-            <paper-input always-float-label label="[[item.name]]" value="[[item.val]]"></paper-input>
-            
+            <if-diff if lhs="[[item.type]]" equals rhs="String">
+              <template>
+                <paper-input always-float-label label="[[item.name]]" value="[[item.val]]"></paper-input>
+              </template>
+            </if-diff>
+            <if-diff if lhs="[[item.type]]" equals rhs="Boolean">
+              <template>
+                <paper-checkbox  checked="[[item.val]]">[[item.name]]</paper-checkbox>
+              </template>
+            </if-diff>
           </div>
         </template>
-    </template>
+      </template>
     </fieldset>
 
 

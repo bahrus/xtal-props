@@ -7,7 +7,8 @@
     "poly-prep": "bahrus/poly-prep#^0.0.12",
     "vaadin-grid": "vaadin/vaadin-grid#^3.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.1",
-    "if-diff": "bahrus/if-diff#^0.0.3"
+    "if-diff": "bahrus/if-diff#^0.0.3",
+    "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.1"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
