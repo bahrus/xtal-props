@@ -1,31 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>xtal-props demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <title>xtal-props demo</title>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../xtal-props.html">
-    <link rel="import" href="../../polymer/polymer-element.html">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-      </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic xtal-props demo</h3>
-      <demo-snippet>
-        <template>
-          <xtal-props debug></xtal-props>
-        </template>
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../xtal-props.html">
+  <link rel="import" href="../../polymer/polymer-element.html">
 
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Basic xtal-props demo</h3>
+    <demo-snippet>
+      <template>
+        <xtal-props debug></xtal-props>
         <dom-module id="my-component">
           <template>
             Ctrl-Click here to debug my-component
@@ -41,13 +42,13 @@
                 message: {
                   type: String,
                   notify: true,
-                  value:'Happy Birthday'
+                  value: 'Happy Birthday'
                 },
-                isHappy:{
+                isHappy: {
                   type: Boolean,
                   value: true
                 },
-                age:{
+                age: {
                   type: Number,
                   value: 14
                 }
@@ -55,10 +56,13 @@
             }
           }
           customElements.define(MyComponent.is, MyComponent);
-
         </script>
         <my-component></my-component>
-      </demo-snippet>
-    </div>
-  </body>
+      </template>
+
+
+    </demo-snippet>
+  </div>
+</body>
+
 </html>
