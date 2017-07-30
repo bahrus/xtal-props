@@ -9,15 +9,17 @@
         display: block;
       }
     </style>
-    <h2>[[elementName]]</h2>
-    <template is="dom-if" if="[[debug]]">
-      <template is="dom-repeat" items="[[primitiveCEProps]]">
-        <div class="primitive prop">
-          <label>[[item.name]]:&nbsp;</label><input readonly type="text" value$="[[item.val]]">
-        </div>
-        
-      </template>
+    <fieldset>
+      <legend>[[elementName]]</legend>
+      <template is="dom-if" if="[[debug]]">
+        <template is="dom-repeat" items="[[primitiveCEProps]]">
+          <div class="primitive prop">
+            <label>[[item.name]]:&nbsp;</label><input readonly type="text" value$="[[item.val]]">
+          </div>
+        </template>
     </template>
+    </fieldset>
+
 
   </template>
 
