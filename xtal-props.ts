@@ -1,18 +1,19 @@
-module xtal.elements{
-    interface PropType{
+module xtal.elements {
+    interface PropType {
         name: string,
         val: any,
         type: string
     }
-    interface IXtalPropsProperties{
+    interface IXtalPropsProperties {
         debug: boolean | polymer.PropObjectType,
-        elementName: string | polymer.PropObjectType,
+        name: string | polymer.PropObjectType,
         watch: any | polymer.PropObjectType,
-        primitiveCEProps: PropType[] | polymer.PropObjectType,
+        polymerProps: { [key: string]: polymer.PropObjectType } | polymer.PropObjectType
+        bindableProps: PropType[] | polymer.PropObjectType,
     }
 
-    function initXtalProps(){
-        if(customElements.get('xtal-props')) return;
+    function initXtalProps() {
+        if (customElements.get('xtal-props')) return;
         /**
         * `xtal-props`
         * Polymer based object viewer / editor. 
@@ -22,10 +23,10 @@ module xtal.elements{
         * @polymer
         * @demo demo/index.html
         */
-        class XtalProps  extends Polymer.Element implements IXtalPropsProperties{
-            debug: boolean;watch: any;primitiveCEProps: any[];elementName:string;
-            static get is(){return 'xtal-props';}
-            static get properties() : IXtalPropsProperties{
+        class XtalProps extends Polymer.Element implements IXtalPropsProperties {
+            debug: boolean; watch: any; bindableProps: PropType[]; name: string; polymerProps: { [key: string]: polymer.PropObjectType };
+            static get is() { return 'xtal-props'; }
+            static get properties(): IXtalPropsProperties {
                 return {
                     debug: {
                         type: Boolean,
@@ -38,15 +39,34 @@ module xtal.elements{
                         type: Object,
                         observer: 'onPropsChange'
                     },
-                    primitiveCEProps:{
+                    polymerProps: {
+                        type: Object,
+                        observer: 'onPropsChange'
+                    },
+                    bindableProps: {
                         type: Array,
                     },
-                    elementName:{
+                    name: {
                         type: String
                     }
                 }
             }
-           displayDebugView(e: Event, CE_ProtoType){
+            onPropsChange() {
+                if(!this.polymerProps || !this.watch) return;
+                const primitiveCEProps = [];
+                for(const key in this.polymerProps){
+                    const polyProp = this.polymerProps[key];
+                    const newProp = {
+                        name: key,
+                        val: this.watch[key],
+                        type: polyProp.type.name,
+                    }
+                    console.log(newProp);
+                    primitiveCEProps.push(newProp);
+                }
+                this.bindableProps = primitiveCEProps;
+            }
+            displayDebugView(e: Event, CE_ProtoType) {
                 this.style.display = 'block';
                 //const objToEdit = {};
                 //const ownProps = Object.getOwnPropertyNames(e.srcElement);
@@ -55,50 +75,39 @@ module xtal.elements{
                 //     if(this.namesToBlock.indexOf(name) !==-1 ) return;
                 //     objToEdit[name] = e.srcElement[name];
                 // });
-                const polyProps = CE_ProtoType.properties as {[key: string] : polymer.PropObjectType};
+                const polyProps = CE_ProtoType.properties as { [key: string]: polymer.PropObjectType };
                 const ce = e.srcElement;
-                if(polyProps){
-                    const primitiveCEProps = [];
-                    for(const key in polyProps){
-                        const polyProp = polyProps[key];
-                        const newProp = {
-                            name: key,
-                            val: ce[key],
-                            type: polyProp.type.name,
-                        }
-                        console.log(newProp);
-                        primitiveCEProps.push(newProp);
-                    }
-                    this.primitiveCEProps = primitiveCEProps;
-                }
-                
+                this.watch = ce;
+                this.polymerProps = polyProps;
+
+
                 // if(CE)
                 // console.log(objToEdit);
                 // this.watch = objToEdit;
             }
-            onEnableDebugging(){
-                if(this.debug){
+            onEnableDebugging() {
+                if (this.debug) {
                     this.style.display = 'none';
                     const _this = this;
-                    document.body.addEventListener('click', e =>{
-                        if(e.ctrlKey){
+                    document.body.addEventListener('click', e => {
+                        if (e.ctrlKey) {
                             const tn = e.srcElement.tagName.toLowerCase();
-                            
-                            if(tn.indexOf('-') > -1){
+
+                            if (tn.indexOf('-') > -1) {
                                 const CE_ProtoType = customElements.get(tn);
-                                if(CE_ProtoType){
+                                if (CE_ProtoType) {
                                     console.log('enableDebug');
-                                    this.elementName = tn;
+                                    this.name = tn;
                                     _this.displayDebugView(e, CE_ProtoType);
                                 }
                             }
                         }
-                        
+
                     })
                 }
             }
-        }  
-        customElements.define(XtalProps.is, XtalProps);      
+        }
+        customElements.define(XtalProps.is, XtalProps);
     }
 
     const testSyncKey = 'xtal_elements_props';

@@ -32,6 +32,7 @@
             Ctrl-Click here to debug my-component
             <div>Message: [[message]]</div>
             Modify message: <input type="textbox" value="{{message::input}}">
+            <xtal-props id="myProps"></xtal-props>
           </template>
         </dom-module>
         <script>
@@ -51,13 +52,25 @@
                 age: {
                   type: Number,
                   value: 14
+                },
+                cake:{
+                  type: Object,
+                  value: {
+
+                  }
                 }
               }
+            }
+            ready(){
+              super.ready();
+              this.$.myProps.watch = this;
+              this.$.myProps.watchProps = MyComponent.properties;
             }
           }
           customElements.define(MyComponent.is, MyComponent);
         </script>
         <my-component></my-component>
+        
       </template>
 
 

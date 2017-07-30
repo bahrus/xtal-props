@@ -29,13 +29,33 @@ var xtal;
                             type: Object,
                             observer: 'onPropsChange'
                         },
-                        primitiveCEProps: {
+                        polymerProps: {
+                            type: Object,
+                            observer: 'onPropsChange'
+                        },
+                        bindableProps: {
                             type: Array,
                         },
-                        elementName: {
+                        name: {
                             type: String
                         }
                     };
+                }
+                onPropsChange() {
+                    if (!this.polymerProps || !this.watch)
+                        return;
+                    const primitiveCEProps = [];
+                    for (const key in this.polymerProps) {
+                        const polyProp = this.polymerProps[key];
+                        const newProp = {
+                            name: key,
+                            val: this.watch[key],
+                            type: polyProp.type.name,
+                        };
+                        console.log(newProp);
+                        primitiveCEProps.push(newProp);
+                    }
+                    this.bindableProps = primitiveCEProps;
                 }
                 displayDebugView(e, CE_ProtoType) {
                     this.style.display = 'block';
@@ -48,20 +68,8 @@ var xtal;
                     // });
                     const polyProps = CE_ProtoType.properties;
                     const ce = e.srcElement;
-                    if (polyProps) {
-                        const primitiveCEProps = [];
-                        for (const key in polyProps) {
-                            const polyProp = polyProps[key];
-                            const newProp = {
-                                name: key,
-                                val: ce[key],
-                                type: polyProp.type.name,
-                            };
-                            console.log(newProp);
-                            primitiveCEProps.push(newProp);
-                        }
-                        this.primitiveCEProps = primitiveCEProps;
-                    }
+                    this.watch = ce;
+                    this.polymerProps = polyProps;
                     // if(CE)
                     // console.log(objToEdit);
                     // this.watch = objToEdit;
@@ -77,7 +85,7 @@ var xtal;
                                     const CE_ProtoType = customElements.get(tn);
                                     if (CE_ProtoType) {
                                         console.log('enableDebug');
-                                        this.elementName = tn;
+                                        this.name = tn;
                                         _this.displayDebugView(e, CE_ProtoType);
                                     }
                                 }

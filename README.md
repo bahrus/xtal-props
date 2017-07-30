@@ -16,7 +16,7 @@ View / Edit an object.  Debug web components
 - [x] Readonly support for string, boolean, number properties (Polymer components only).
 - [ ] Readonly support nested child object properties.
 - [ ] Readonly support for array properties.
-- []  Edit support for string, boolean, number properties.
+- [ ]  Edit support for string, boolean, number properties.
 - [ ] Edit support nested child object properties.
 - [ ] Edit support for array properties.
 
