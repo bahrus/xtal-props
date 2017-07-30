@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <link rel="import" href="../polymer/polymer-element.html">
-
+<link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 <dom-module id="xtal-props">
   <template>
     <style>
@@ -7,30 +8,11 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <h2>Hello!</h2>
+    <template is="dom-repeat" items="[[primitiveCEProps]]">
+      [[item.name]], [[item.val]]
+    </template>
   </template>
 
-  <script>
-    /**
-     * `xtal-props`
-     * view / edit an object.  Debug web components
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
-    class XtalProps extends Polymer.Element {
-      static get is() { return 'xtal-props'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'xtal-props'
-          }
-        };
-      }
-    }
-
-    window.customElements.define(XtalProps.is, XtalProps);
-  </script>
+  <script src="xtal-props.js"></script>
 </dom-module>
