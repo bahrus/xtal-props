@@ -2,6 +2,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../polymer/lib/elements/dom-if.html">
 <link rel="import" href="../polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../paper-input/paper-input.html">
 <dom-module id="xtal-props">
   <template>
     <style>
@@ -14,7 +15,8 @@
       <template is="dom-if" if="[[debug]]">
         <template is="dom-repeat" items="[[primitiveCEProps]]">
           <div class="primitive prop">
-            <label>[[item.name]]:&nbsp;</label><input readonly type="text" value$="[[item.val]]">
+            <paper-input always-float-label label="[[item.name]]" value="[[item.val]]"></paper-input>
+            
           </div>
         </template>
     </template>
