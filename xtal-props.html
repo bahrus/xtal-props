@@ -31,6 +31,13 @@
                 <paper-input type="number" always-float-label label="[[item.name]]" value="[[item.val]]"></paper-input>
               </template>
             </if-diff>
+            
+            <if-diff if lhs="[[item.type]]" equals rhs="Object">
+              <template>
+                <label for="[[item.name">Edit [[item.name]]</label><input type="checkbox" name="[[item.name]]" on-click="toggleViewObjectProperty">
+                <xtal-props id="[[item.name]]_objViewer"></xtal-props>
+              </template>
+            </if-diff>
           </div>
         </template>
     </fieldset>

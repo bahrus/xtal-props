@@ -44,7 +44,7 @@ var xtal;
                 onPropsChange() {
                     if (!this.polymerProps || !this.watch)
                         return;
-                    const primitiveCEProps = [];
+                    const bindableProps = [];
                     for (const key in this.polymerProps) {
                         const polyProp = this.polymerProps[key];
                         const newProp = {
@@ -53,9 +53,9 @@ var xtal;
                             type: polyProp.type.name,
                         };
                         console.log(newProp);
-                        primitiveCEProps.push(newProp);
+                        bindableProps.push(newProp);
                     }
-                    this.bindableProps = primitiveCEProps;
+                    this.bindableProps = bindableProps;
                 }
                 displayDebugView(e, CE_ProtoType) {
                     this.style.display = 'block';
@@ -92,6 +92,17 @@ var xtal;
                             }
                         });
                     }
+                }
+                toggleViewObjectProperty(e) {
+                    //const selector = '#' + e.srcElement['name'] + '_objViewer';
+                    //console.log(selector);
+                    const propName = e.srcElement['name'];
+                    const nextElement = e.srcElement.nextElementSibling;
+                    console.log(nextElement);
+                    // const subPropEditor = <any>this.querySelector(selector) as IXtalPropsProperties;
+                    // subPropEditor.watch = e['model'].item;
+                    nextElement['watch'] = e['model'].item;
+                    nextElement.polymerProps = this.polymerProps[propName]['_properties'];
                 }
             }
             customElements.define(XtalProps.is, XtalProps);
