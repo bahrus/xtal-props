@@ -111,13 +111,17 @@ module xtal.elements {
             toggleViewObjectProperty(e: Event){
                 //const selector = '#' + e.srcElement['name'] + '_objViewer';
                 //console.log(selector);
-                const propName = e.srcElement['name'];
-                const nextElement = <any>e.srcElement.nextElementSibling as IXtalPropsProperties;
-                console.log(nextElement);
-                // const subPropEditor = <any>this.querySelector(selector) as IXtalPropsProperties;
-                // subPropEditor.watch = e['model'].item;
-                nextElement['watch'] = e['model'].item;
-                nextElement.polymerProps = this.polymerProps[propName]['_properties'];
+                const srcEl = e.srcElement;
+                const propName = srcEl['name'];
+                const childPropsEditor = <any>srcEl.nextElementSibling as IXtalPropsProperties;
+                console.log(childPropsEditor);
+                // subPropEditor = <any>this.querySelector(selector) as IXtalPropsProperties;
+                // 
+                const item = e['model'].item;
+                childPropsEditor.watch = item;
+                childPropsEditor.name = item.name;
+                childPropsEditor['watch'] = item.val;
+                childPropsEditor.polymerProps = this.polymerProps[propName]['_properties'];
             }
         }
         customElements.define(XtalProps.is, XtalProps);
