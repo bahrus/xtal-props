@@ -60,7 +60,8 @@ var xtal;
                             name: key,
                             val: this.watch[key],
                             type: polyProp.type.name,
-                            emoji: polyProp['emoji'],
+                            emoji: polyProp.emoji,
+                            label: polyProp.label || key,
                         };
                         console.log(newProp);
                         bindableProps.push(newProp);

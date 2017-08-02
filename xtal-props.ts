@@ -2,7 +2,12 @@ module xtal.elements {
     interface PropType {
         name: string,
         val: any,
-        type: string
+        type: string,
+        label?: string
+    }
+    interface ExtendedPolymerPropType extends polymer.PropObjectType{
+        label?: string,
+        emoji?: string,
     }
     interface IXtalPropsProperties {
         debug: boolean | polymer.PropObjectType,
@@ -64,15 +69,15 @@ module xtal.elements {
             }
             onPropsChange() {
                 if(!this.polymerProps || !this.watch) return;
-                const bindableProps = [];
+                const bindableProps : PropType[] = [];
                 for(const key in this.polymerProps){
-                    const polyProp = this.polymerProps[key];
+                    const polyProp = this.polymerProps[key] as ExtendedPolymerPropType;
                     const newProp = {
                         name: key,
                         val: this.watch[key],
                         type: polyProp.type.name,
-                        emoji: polyProp['emoji'],
-                        //_properties: polyProp['_properties'],
+                        emoji: polyProp.emoji,
+                        label: polyProp.label || key,
                     }
                     console.log(newProp);
                     bindableProps.push(newProp);
