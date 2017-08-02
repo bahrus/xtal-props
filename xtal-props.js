@@ -94,19 +94,14 @@ var xtal;
                     }
                 }
                 toggleViewObjectProperty(e) {
-                    //const selector = '#' + e.srcElement['name'] + '_objViewer';
-                    //console.log(selector);
                     const srcEl = e.srcElement;
-                    const propName = srcEl['name'];
-                    const childPropsEditor = srcEl.nextElementSibling;
-                    console.log(childPropsEditor);
-                    // subPropEditor = <any>this.querySelector(selector) as IXtalPropsProperties;
-                    // 
+                    //const propName = srcEl['name'];
+                    const childPropsEditor = srcEl;
                     const item = e['model'].item;
                     childPropsEditor.watch = item;
-                    childPropsEditor.name = item.name;
-                    childPropsEditor['watch'] = item.val;
-                    childPropsEditor.polymerProps = this.polymerProps[propName]['_properties'];
+                    //childPropsEditor.name = item.name;
+                    childPropsEditor.watch = item.val;
+                    childPropsEditor.polymerProps = this.polymerProps[item.name]['_properties'];
                 }
             }
             customElements.define(XtalProps.is, XtalProps);
