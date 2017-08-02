@@ -7,6 +7,7 @@ module xtal.elements {
     interface IXtalPropsProperties {
         debug: boolean | polymer.PropObjectType,
         name: string | polymer.PropObjectType,
+        expandText: string | polymer.PropObjectType,
         watch: any | polymer.PropObjectType,
         polymerProps: { [key: string]: polymer.PropObjectType } | polymer.PropObjectType
         bindableProps: PropType[] | polymer.PropObjectType,
@@ -25,6 +26,7 @@ module xtal.elements {
         */
         class XtalProps extends Polymer.Element implements IXtalPropsProperties {
             debug: boolean; watch: any; bindableProps: PropType[]; name: string; polymerProps: { [key: string]: polymer.PropObjectType };
+            expandText: string;
             static get is() { return 'xtal-props'; }
             static get properties(): IXtalPropsProperties {
                 return {
@@ -48,7 +50,16 @@ module xtal.elements {
                     },
                     name: {
                         type: String
+                    },
+                    expandText:{
+                        type: String,
+                        observer: 'onSetExpandText'
                     }
+                }
+            }
+            onSetExpandText(){
+                if(this.expandText){
+                    this.$.legend.style.cursor = 'pointer';
                 }
             }
             onPropsChange() {
@@ -60,6 +71,7 @@ module xtal.elements {
                         name: key,
                         val: this.watch[key],
                         type: polyProp.type.name,
+                        emoji: polyProp['emoji'],
                         //_properties: polyProp['_properties'],
                     }
                     console.log(newProp);
@@ -116,7 +128,9 @@ module xtal.elements {
                 childPropsEditor.watch = item;
                 //childPropsEditor.name = item.name;
                 childPropsEditor.watch = item.val;
-                childPropsEditor.polymerProps = this.polymerProps[item.name]['_properties'];
+                const polymerProps = this.polymerProps[item.name];
+                
+                childPropsEditor.polymerProps = polymerProps['_properties'];
             }
         }
         customElements.define(XtalProps.is, XtalProps);

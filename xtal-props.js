@@ -38,8 +38,17 @@ var xtal;
                         },
                         name: {
                             type: String
+                        },
+                        expandText: {
+                            type: String,
+                            observer: 'onSetExpandText'
                         }
                     };
+                }
+                onSetExpandText() {
+                    if (this.expandText) {
+                        this.$.legend.style.cursor = 'pointer';
+                    }
                 }
                 onPropsChange() {
                     if (!this.polymerProps || !this.watch)
@@ -51,6 +60,7 @@ var xtal;
                             name: key,
                             val: this.watch[key],
                             type: polyProp.type.name,
+                            emoji: polyProp['emoji'],
                         };
                         console.log(newProp);
                         bindableProps.push(newProp);
@@ -101,7 +111,8 @@ var xtal;
                     childPropsEditor.watch = item;
                     //childPropsEditor.name = item.name;
                     childPropsEditor.watch = item.val;
-                    childPropsEditor.polymerProps = this.polymerProps[item.name]['_properties'];
+                    const polymerProps = this.polymerProps[item.name];
+                    childPropsEditor.polymerProps = polymerProps['_properties'];
                 }
             }
             customElements.define(XtalProps.is, XtalProps);
