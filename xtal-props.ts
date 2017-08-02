@@ -125,10 +125,23 @@ module xtal.elements {
                 //const propName = srcEl['name'];
                 const childPropsEditor = <any>srcEl as IXtalPropsProperties;
                 const item = e['model'].item;
-                childPropsEditor.watch = item;
-                //childPropsEditor.name = item.name;
-                childPropsEditor.watch = item.val;
                 const polymerProps = this.polymerProps[item.name];
+                if(polymerProps['_isExpanded']){
+                    console.log('deleting watch and bindableProps');
+                    //delete childPropsEditor.watch;
+                    //delete childPropsEditor.bindableProps;
+                    // if(childPropsEditor.bindableProps){
+                    //     childPropsEditor['splice']('bindableProps', 0, childPropsEditor.bindableProps['length']);
+                    // }
+                    childPropsEditor.bindableProps = null;
+                    childPropsEditor.watch = null;
+                    polymerProps['_isExpanded'] = false;
+                }else{
+                    childPropsEditor.watch = item.val;
+                    polymerProps['_isExpanded'] = true;
+                }
+
+                
                 
                 childPropsEditor.polymerProps = polymerProps['_properties'];
             }
