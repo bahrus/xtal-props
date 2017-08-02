@@ -105,6 +105,8 @@ var xtal;
                 }
                 toggleViewObjectProperty(e) {
                     const srcEl = e.srcElement;
+                    if (e['path'][0].tagName !== 'LEGEND')
+                        return;
                     //const propName = srcEl['name'];
                     const childPropsEditor = srcEl;
                     const item = e['model'].item;

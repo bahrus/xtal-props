@@ -122,6 +122,7 @@ module xtal.elements {
 
             toggleViewObjectProperty(e: Event){
                 const srcEl = e.srcElement;
+                if(e['path'][0].tagName !== 'LEGEND') return;
                 //const propName = srcEl['name'];
                 const childPropsEditor = <any>srcEl as IXtalPropsProperties;
                 const item = e['model'].item;
