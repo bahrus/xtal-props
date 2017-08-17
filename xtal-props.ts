@@ -86,22 +86,11 @@ module xtal.elements {
             }
             displayDebugView(e: Event, CE_ProtoType) {
                 this.style.display = 'block';
-                //const objToEdit = {};
-                //const ownProps = Object.getOwnPropertyNames(e.srcElement);
-                // ownProps.forEach(name => {
-                //     if(name.startsWith('_')) return;
-                //     if(this.namesToBlock.indexOf(name) !==-1 ) return;
-                //     objToEdit[name] = e.srcElement[name];
-                // });
                 const polyProps = CE_ProtoType.properties as { [key: string]: polymer.PropObjectType };
                 const ce = e.srcElement;
                 this.watch = ce;
                 this.polymerProps = polyProps;
 
-
-                // if(CE)
-                // console.log(objToEdit);
-                // this.watch = objToEdit;
             }
             onEnableDebugging() {
                 if (this.debug) {
@@ -126,6 +115,7 @@ module xtal.elements {
             }
 
             toggleViewObjectProperty(e: Event){
+                debugger;
                 const srcEl = e.srcElement;
                 if(e['path'][0].tagName !== 'LEGEND') return;
                 //const propName = srcEl['name'];

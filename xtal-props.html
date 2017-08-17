@@ -36,10 +36,15 @@
             
             <if-diff if lhs="[[item.type]]" equals rhs="Object">
               <template>
-                <!-- <label for="[[item.name">+</label><input type="checkbox" name="[[item.name]]" on-click="toggleViewObjectProperty"> -->
                 <xtal-props expand-text="[[item.emoji]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
               </template>
             </if-diff>
+            <if-diff if lhs="[[item.type]]" equals rhs="Array">
+              <template>
+                I am an array
+              </template>
+            </if-diff>
+
           </div>
         </template>
     </fieldset>

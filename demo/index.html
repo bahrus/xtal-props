@@ -32,7 +32,7 @@
             Ctrl-Click here to debug my-component
             <div>Message: [[message]]</div>
             Modify message: <input type="textbox" value="{{message::input}}">
-            <xtal-props id="myProps"></xtal-props>
+            <xtal-props name="My Component" id="myProps"></xtal-props>
           </template>
         </dom-module>
         <script>
@@ -54,7 +54,7 @@
                 age: {
                   label: 'My Age',
                   type: Number,
-                  value: 14
+                  value: 8
                 },
                 cake:{
                   type: Object,
@@ -71,12 +71,34 @@
                       type: Number
                     }
                   }
+                },
+                presents:{
+                  type: Array,
+                  emoji: '🎁',
+                  value:[
+                    {
+                      from: 'John',
+                      gift: 'Legos'
+                    },
+                    {
+                      from: 'Samantha',
+                      gift: 'Sorting Hat'
+                    }
+                  ],
+                  _properties:{
+                    from:{
+                      type: String
+                    },
+                    gift:{
+                      type: String
+                    }
+                  },
                 }
               }
             }
             ready(){
               super.ready();
-              this.$.myProps.name = 'my-component';
+              //this.$.myProps.name = 'my-component';
               this.$.myProps.watch = this;
               this.$.myProps.polymerProps = MyComponent.properties;
             }
