@@ -5,6 +5,7 @@
 <link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../vaadin-grid/vaadin-grid.html">
 <dom-module id="xtal-props">
   <template>
     <style>
@@ -34,14 +35,41 @@
               </template>
             </if-diff>
             
-            <if-diff if lhs="[[item.type]]" equals rhs="Object">
+            <if-diff if lhs="[[item.type]]" equals rhs="Object" restamp>
               <template>
                 <xtal-props expand-text="[[item.emoji]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
               </template>
             </if-diff>
-            <if-diff if lhs="[[item.type]]" equals rhs="Array">
+            <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
               <template>
-                I am an array
+                <vaadin-grid items="[[item.val]]">
+                  <vaadin-grid-column>
+                    <template class="header">
+                      <span draggable="true">
+                        From
+                      </span>
+                    </template>
+                    <template>
+                      <span draggable="true">
+                        [[item.from]]
+                      </span>
+                    </template>
+                    
+                  </vaadin-grid-column>
+                  <vaadin-grid-column>
+                    <template class="header">
+                      <span draggable="true">
+                        Gift
+                      </span>
+                    </template>
+                    <template>
+                      <span draggable="true">
+                        [[item.gift]]
+                      </span>
+                    </template>
+                    
+                  </vaadin-grid-column>
+                </vaadin-grid>
               </template>
             </if-diff>
 
