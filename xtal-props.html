@@ -38,13 +38,13 @@
 
           <if-diff if lhs="[[item.type]]" equals rhs="Object" restamp>
             <template>
-              <xtal-props expand-text="[[item.emoji]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
+              <xtal-props expand-text="[[item.expandText]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
             </template>
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
             <template>
               <fieldset>
-                <legend>[[item.label]]</legend>
+                <legend>[[item.expandText]] [[item.label]]</legend>
                 <vaadin-grid items="[[item.val]]">
                   <template is="dom-repeat" items="[[item._properties]]" as="column">
                     <vaadin-grid-column>

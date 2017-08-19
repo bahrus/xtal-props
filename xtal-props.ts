@@ -7,7 +7,7 @@ module xtal.elements {
     }
     interface ExtendedPolymerPropType extends polymer.PropObjectType{
         label?: string,
-        emoji?: string,
+        expandText?: string,
         _properties?: ExtendedPolymerPropType[];
     }
     interface IXtalPropsProperties {
@@ -77,7 +77,7 @@ module xtal.elements {
                         name: key,
                         val: this.watch[key],
                         type: polyProp.type.name,
-                        emoji: polyProp.emoji,
+                        expandText: polyProp.expandText,
                         label: polyProp.label || key,
                         _properties: polyProp._properties,
                     }

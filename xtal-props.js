@@ -60,7 +60,7 @@ var xtal;
                             name: key,
                             val: this.watch[key],
                             type: polyProp.type.name,
-                            emoji: polyProp.emoji,
+                            expandText: polyProp.expandText,
                             label: polyProp.label || key,
                             _properties: polyProp._properties,
                         };
