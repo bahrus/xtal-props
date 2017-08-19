@@ -8,6 +8,7 @@ module xtal.elements {
     interface ExtendedPolymerPropType extends polymer.PropObjectType{
         label?: string,
         emoji?: string,
+        _properties?: ExtendedPolymerPropType[];
     }
     interface IXtalPropsProperties {
         debug: boolean | polymer.PropObjectType,
@@ -78,6 +79,7 @@ module xtal.elements {
                         type: polyProp.type.name,
                         emoji: polyProp.emoji,
                         label: polyProp.label || key,
+                        _properties: polyProp._properties,
                     }
                     console.log(newProp);
                     bindableProps.push(newProp);

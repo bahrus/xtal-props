@@ -56,26 +56,26 @@
                   type: Number,
                   value: 8
                 },
-                cake:{
+                cake: {
                   type: Object,
                   emoji: '🎂',
                   value: {
                     flavor: 'chocolate',
                     diameter: 15
                   },
-                  _properties:{
+                  _properties: {
                     flavor: {
-                      type:String,
+                      type: String,
                     },
-                    diameter:{
+                    diameter: {
                       type: Number
                     }
                   }
                 },
-                presents:{
+                presents: {
                   type: Array,
                   emoji: '🎁',
-                  value:[
+                  value: [
                     {
                       from: 'John',
                       gift: 'Legos'
@@ -85,18 +85,21 @@
                       gift: 'Sorting Hat'
                     }
                   ],
-                  _properties:{
-                    from:{
+                  _properties: [
+                    {
+                      name: 'from',
                       type: String
                     },
-                    gift:{
+                    {
+                      name: 'gift',
                       type: String
                     }
-                  },
+                  ]
+
                 }
               }
             }
-            ready(){
+            ready() {
               super.ready();
               //this.$.myProps.name = 'my-component';
               this.$.myProps.watch = this;
@@ -106,7 +109,7 @@
           customElements.define(MyComponent.is, MyComponent);
         </script>
         <my-component></my-component>
-        
+
       </template>
 
 

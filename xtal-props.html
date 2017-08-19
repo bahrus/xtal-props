@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <link rel="import" href="../polymer/polymer-element.html">
- <link rel="import" href="../polymer/lib/elements/dom-if.html"> 
+<link rel="import" href="../polymer/lib/elements/dom-if.html">
+<link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../if-diff/if-diff.html">
 <link rel="import" href="../polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../paper-input/paper-input.html">
@@ -9,7 +10,7 @@
 <dom-module id="xtal-props">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
       }
     </style>
@@ -17,64 +18,52 @@
       <legend id="legend">
         [[expandText]] [[name]]
       </legend>
-        <template is="dom-repeat" items="[[bindableProps]]">
-          <div class="primitive prop">
-            <if-diff if lhs="[[item.type]]" equals rhs="String">
-              <template>
-                <paper-input always-float-label label="[[item.label]]" value="[[item.val]]"></paper-input>
-              </template>
-            </if-diff>
-            <if-diff if lhs="[[item.type]]" equals rhs="Boolean">
-              <template>
-                <paper-checkbox  checked="[[item.val]]">[[item.label]]</paper-checkbox>
-              </template>
-            </if-diff>
-            <if-diff if lhs="[[item.type]]" equals rhs="Number">
-              <template>
-                <paper-input type="number" always-float-label label="[[item.label]]" value="[[item.val]]"></paper-input>
-              </template>
-            </if-diff>
-            
-            <if-diff if lhs="[[item.type]]" equals rhs="Object" restamp>
-              <template>
-                <xtal-props expand-text="[[item.emoji]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
-              </template>
-            </if-diff>
-            <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
-              <template>
-                <vaadin-grid items="[[item.val]]">
-                  <vaadin-grid-column>
-                    <template class="header">
-                      <span draggable="true">
-                        From
-                      </span>
-                    </template>
-                    <template>
-                      <span draggable="true">
-                        [[item.from]]
-                      </span>
-                    </template>
-                    
-                  </vaadin-grid-column>
-                  <vaadin-grid-column>
-                    <template class="header">
-                      <span draggable="true">
-                        Gift
-                      </span>
-                    </template>
-                    <template>
-                      <span draggable="true">
-                        [[item.gift]]
-                      </span>
-                    </template>
-                    
-                  </vaadin-grid-column>
-                </vaadin-grid>
-              </template>
-            </if-diff>
+      <template is="dom-repeat" items="[[bindableProps]]">
+        <div class="primitive prop">
+          <if-diff if lhs="[[item.type]]" equals rhs="String">
+            <template>
+              <paper-input always-float-label label="[[item.label]]" value="[[item.val]]"></paper-input>
+            </template>
+          </if-diff>
+          <if-diff if lhs="[[item.type]]" equals rhs="Boolean">
+            <template>
+              <paper-checkbox checked="[[item.val]]">[[item.label]]</paper-checkbox>
+            </template>
+          </if-diff>
+          <if-diff if lhs="[[item.type]]" equals rhs="Number">
+            <template>
+              <paper-input type="number" always-float-label label="[[item.label]]" value="[[item.val]]"></paper-input>
+            </template>
+          </if-diff>
 
-          </div>
-        </template>
+          <if-diff if lhs="[[item.type]]" equals rhs="Object" restamp>
+            <template>
+              <xtal-props expand-text="[[item.emoji]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
+            </template>
+          </if-diff>
+          <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
+            <template>
+
+              <vaadin-grid items="[[item.val]]">
+                <template is="dom-repeat" items="[[item._properties]]" as="column">
+                  <vaadin-grid-column>
+                    <template class="header">[[column.name]]</template>
+                    <template>
+                      <span draggable="true">
+                              [[get(column.name, item)]]
+                            </span>
+                    </template>
+
+                  </vaadin-grid-column>
+                </template>
+
+
+              </vaadin-grid>
+            </template>
+          </if-diff>
+
+        </div>
+      </template>
     </fieldset>
 
 

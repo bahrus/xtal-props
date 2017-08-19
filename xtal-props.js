@@ -62,6 +62,7 @@ var xtal;
                             type: polyProp.type.name,
                             emoji: polyProp.emoji,
                             label: polyProp.label || key,
+                            _properties: polyProp._properties,
                         };
                         console.log(newProp);
                         bindableProps.push(newProp);
