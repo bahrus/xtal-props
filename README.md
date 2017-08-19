@@ -13,7 +13,7 @@ View / Edit an object.  Debug web components
 - [ ] Auto generate an interface based on the static polymer properties.
   - [x] Readonly support for string, boolean, number properties (Polymer components only).
   - [x] Readonly support nested child object properties.
-  - [ ] Readonly support for array properties.
+  - [x] Readonly support for array properties.
   - [ ]  Edit support for string, boolean, number properties.
   - [ ] Edit support nested child object properties.
   - [ ] Edit support for array properties.
@@ -22,7 +22,7 @@ View / Edit an object.  Debug web components
   - [x] Open up an object editor / viewer after ctrl-clicking on a custom element.
   - [x] Readonly support for string, boolean, number properties (Polymer components only).
   - [x] Readonly support nested child object properties.
-  - [ ] Readonly support for array properties.
+  - [x] Readonly support for array properties.
   - [ ]  Edit support for string, boolean, number properties.
   - [ ] Edit support nested child object properties.
   - [ ] Edit support for array properties.
