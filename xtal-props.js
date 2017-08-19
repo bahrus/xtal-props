@@ -96,7 +96,6 @@ var xtal;
                     }
                 }
                 toggleViewObjectProperty(e) {
-                    debugger;
                     const srcEl = e.srcElement;
                     if (e['path'][0].tagName !== 'LEGEND')
                         return;

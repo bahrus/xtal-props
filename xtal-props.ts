@@ -117,7 +117,6 @@ module xtal.elements {
             }
 
             toggleViewObjectProperty(e: Event){
-                debugger;
                 const srcEl = e.srcElement;
                 if(e['path'][0].tagName !== 'LEGEND') return;
                 //const propName = srcEl['name'];

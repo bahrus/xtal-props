@@ -43,22 +43,24 @@
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
             <template>
+              <fieldset>
+                <legend>[[item.label]]</legend>
+                <vaadin-grid items="[[item.val]]">
+                  <template is="dom-repeat" items="[[item._properties]]" as="column">
+                    <vaadin-grid-column>
+                      <template class="header">[[column.name]]</template>
+                      <template>
+                        <span draggable="true">
+                                [[get(column.name, item)]]
+                              </span>
+                      </template>
 
-              <vaadin-grid items="[[item.val]]">
-                <template is="dom-repeat" items="[[item._properties]]" as="column">
-                  <vaadin-grid-column>
-                    <template class="header">[[column.name]]</template>
-                    <template>
-                      <span draggable="true">
-                              [[get(column.name, item)]]
-                            </span>
-                    </template>
-
-                  </vaadin-grid-column>
-                </template>
+                    </vaadin-grid-column>
+                  </template>
 
 
-              </vaadin-grid>
+                </vaadin-grid>
+              </fieldset>
             </template>
           </if-diff>
 
