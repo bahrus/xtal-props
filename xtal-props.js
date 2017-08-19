@@ -64,7 +64,7 @@ var xtal;
                             label: polyProp.label || key,
                             _properties: polyProp._properties,
                         };
-                        console.log(newProp);
+                        //console.log(newProp);
                         bindableProps.push(newProp);
                     }
                     this.bindableProps = bindableProps;

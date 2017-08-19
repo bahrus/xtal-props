@@ -38,7 +38,7 @@
 
           <if-diff if lhs="[[item.type]]" equals rhs="Object" restamp>
             <template>
-              <xtal-props expand-text="[[item.expandText]]" id="[[item.name]]_objViewer" name="[[item.name]]" on-click="toggleViewObjectProperty"></xtal-props>
+              <xtal-props expand-text="[[item.expandText]]" id="[[item.name]]_objViewer" name="[[item.label]]" on-click="toggleViewObjectProperty"></xtal-props>
             </template>
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
@@ -48,7 +48,7 @@
                 <vaadin-grid items="[[item.val]]">
                   <template is="dom-repeat" items="[[item._properties]]" as="column">
                     <vaadin-grid-column>
-                      <template class="header">[[column.name]]</template>
+                      <template class="header">[[column.label]]</template>
                       <template>
                         <span draggable="true">
                                 [[get(column.name, item)]]
