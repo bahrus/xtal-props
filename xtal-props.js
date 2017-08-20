@@ -99,6 +99,11 @@ var xtal;
                         });
                     }
                 }
+                updateInput(e) {
+                    const item = e.srcElement['item'];
+                    this.watch[item.name] = e.srcElement['value'];
+                    //debugger;
+                }
                 toggleNextElement(e) {
                     e.stopPropagation();
                     const srcEl = e.srcElement;

@@ -125,6 +125,11 @@ module xtal.elements {
                     })
                 }
             }
+            updateInput(e: Event){
+                const item = e.srcElement['item'];
+                this.watch[item.name] = e.srcElement['value'];
+                //debugger;
+            }
             toggleNextElement(e: Event){
                 e.stopPropagation();
                 const srcEl = e.srcElement as HTMLElement;

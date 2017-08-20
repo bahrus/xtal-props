@@ -23,7 +23,7 @@
         <div class="primitive prop">
           <if-diff if lhs="[[item.type]]" equals rhs="String">
             <template>
-              <paper-input always-float-label label="[[item.label]]" value="[[item.val]]"></paper-input>
+              <paper-input on-input="updateInput" item="[[item]]" always-float-label label="[[item.label]]" value="[[item.val]]"></paper-input>
             </template>
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Boolean">
