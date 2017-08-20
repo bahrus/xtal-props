@@ -16,8 +16,8 @@ View / Edit an object.  Debug web components
   - [x] Readonly support for array properties.
   - [x] Edit support for string property.
   - [x] Edit support for  boolean property., 
-  - [ ] Edit support for number property.
-  - [ ] Edit support nested child object properties.
+  - [x] Edit support for number property.
+  - [x] Edit support nested child object properties.
   - [ ] Edit support for array properties.
 - [ ] Provide similar support for other custom element libraries.
 - [ ] Debug support:
@@ -27,8 +27,8 @@ View / Edit an object.  Debug web components
   - [x] Readonly support for array properties.
   - [x] Edit support for string property.
   - [x] Edit support for boolean property. 
-  - [ ] Edit support for number property.
-  - [ ] Edit support nested child object properties.
+  - [x] Edit support for number property.
+  - [x] Edit support nested child object properties.
   - [ ] Edit support for array properties.
   - [ ] Support closing debug panel
 
