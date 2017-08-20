@@ -125,6 +125,21 @@ module xtal.elements {
                     })
                 }
             }
+            toggleNextElement(e: Event){
+                e.stopPropagation();
+                const srcEl = e.srcElement as HTMLElement;
+                const nextSibling = srcEl.nextElementSibling as HTMLElement;
+                if(nextSibling.style.display !== 'none'){
+                    nextSibling['_originalStyleDisplay'] = nextSibling.style.display;
+                    nextSibling.style.display = 'none';
+                }else{
+                    if(nextSibling['_originalStyleDisplay']){
+                        nextSibling.style.display = nextSibling['_originalStyleDisplay'];
+                    }else{
+                        nextSibling.style.display = 'block';
+                    }
+                }
+            }
             toggleView(){
                 this.expanded = !this.expanded;
             }

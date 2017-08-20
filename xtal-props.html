@@ -7,7 +7,7 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../vaadin-grid/vaadin-grid.html">
-<link rel="import" href="../xtal-in/xtal-in-sync.html">
+<!-- <link rel="import" href="../xtal-in/xtal-in-sync.html"> -->
 <dom-module id="xtal-props">
   <template>
     <style>
@@ -41,15 +41,14 @@
             <template>
               <xtal-props expand-text="[[item.expandText]]" 
                 id="[[item.name]]_objViewer" name="[[item.label]]" 
-                on-expanded-changed="childToggled"
-                on-click="toggleViewObjectProperty">
+                on-expanded-changed="childToggled">
               </xtal-props>
             </template>
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Array" restamp>
             <template>
               <fieldset>
-                <legend>[[item.expandText]] [[item.label]]</legend>
+                <legend style="cursor:pointer" on-click="toggleNextElement">[[item.expandText]] [[item.label]]</legend>
                 <vaadin-grid items="[[item.val]]">
                   <template is="dom-repeat" items="[[item._properties]]" as="column">
                     <vaadin-grid-column>

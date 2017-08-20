@@ -99,6 +99,23 @@ var xtal;
                         });
                     }
                 }
+                toggleNextElement(e) {
+                    e.stopPropagation();
+                    const srcEl = e.srcElement;
+                    const nextSibling = srcEl.nextElementSibling;
+                    if (nextSibling.style.display !== 'none') {
+                        nextSibling['_originalStyleDisplay'] = nextSibling.style.display;
+                        nextSibling.style.display = 'none';
+                    }
+                    else {
+                        if (nextSibling['_originalStyleDisplay']) {
+                            nextSibling.style.display = nextSibling['_originalStyleDisplay'];
+                        }
+                        else {
+                            nextSibling.style.display = 'block';
+                        }
+                    }
+                }
                 toggleView() {
                     this.expanded = !this.expanded;
                 }
