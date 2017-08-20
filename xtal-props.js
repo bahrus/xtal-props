@@ -104,6 +104,11 @@ var xtal;
                     this.watch[item.name] = e.srcElement['value'];
                     //debugger;
                 }
+                updateBoolean(e) {
+                    const item = e.srcElement['item'];
+                    this.watch[item.name] = e.srcElement['checked'];
+                    //debugger;
+                }
                 toggleNextElement(e) {
                     e.stopPropagation();
                     const srcEl = e.srcElement;

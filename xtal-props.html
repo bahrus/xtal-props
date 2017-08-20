@@ -28,7 +28,7 @@
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Boolean">
             <template>
-              <paper-checkbox checked="[[item.val]]">[[item.label]]</paper-checkbox>
+              <paper-checkbox on-change="updateBoolean" item="[[item]]" checked="[[item.val]]">[[item.label]]</paper-checkbox>
             </template>
           </if-diff>
           <if-diff if lhs="[[item.type]]" equals rhs="Number">
