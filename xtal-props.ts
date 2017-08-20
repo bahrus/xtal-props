@@ -135,6 +135,9 @@ module xtal.elements {
                 this.watch[item.name] = e.srcElement['checked'];
                 //debugger;
             }
+            // updateNumber(e: Event){
+            //     debugger;
+            // }
             toggleNextElement(e: Event){
                 e.stopPropagation();
                 const srcEl = e.srcElement as HTMLElement;
