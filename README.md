@@ -14,7 +14,8 @@ View / Edit an object.  Debug web components
   - [x] Readonly support for string, boolean, number properties (Polymer components only).
   - [x] Readonly support nested child object properties.
   - [x] Readonly support for array properties.
-  - [ ]  Edit support for string, boolean, number properties.
+  - [x] Edit support for string property.
+  - [ ] Edit support for  boolean, number properties.
   - [ ] Edit support nested child object properties.
   - [ ] Edit support for array properties.
 - [ ] Provide similar support for other custom element libraries.
@@ -23,7 +24,8 @@ View / Edit an object.  Debug web components
   - [x] Readonly support for string, boolean, number properties (Polymer components only).
   - [x] Readonly support nested child object properties.
   - [x] Readonly support for array properties.
-  - [ ]  Edit support for string, boolean, number properties.
+  - [ ] Edit support for string property
+  - [ ] Edit support for boolean, number properties.
   - [ ] Edit support nested child object properties.
   - [ ] Edit support for array properties.
   - [ ] Support closing debug panel
