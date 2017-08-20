@@ -12,6 +12,7 @@ module xtal.elements {
     }
     interface IXtalPropsProperties {
         debug: boolean | polymer.PropObjectType,
+        expanded: boolean | polymer.PropObjectType,
         name: string | polymer.PropObjectType,
         expandText: string | polymer.PropObjectType,
         watch: any | polymer.PropObjectType,
@@ -31,8 +32,13 @@ module xtal.elements {
         * @demo demo/index.html
         */
         class XtalProps extends Polymer.Element implements IXtalPropsProperties {
+            /**
+            * Fired  when ready legend is first expanded.
+            *
+            * @event toggle-view
+            */
             debug: boolean; watch: any; bindableProps: PropType[]; name: string; polymerProps: { [key: string]: polymer.PropObjectType };
-            expandText: string;
+            expandText: string; expanded: boolean;
             static get is() { return 'xtal-props'; }
             static get properties(): IXtalPropsProperties {
                 return {
@@ -46,6 +52,10 @@ module xtal.elements {
                     watch: {
                         type: Object,
                         observer: 'onPropsChange'
+                    },
+                    expanded:{
+                        type: Boolean,
+                        notify: true
                     },
                     polymerProps: {
                         type: Object,
@@ -115,10 +125,12 @@ module xtal.elements {
                     })
                 }
             }
-
-            toggleViewObjectProperty(e: Event){
+            toggleView(){
+                this.expanded = !this.expanded;
+            }
+            childToggled(e: Event){
                 const srcEl = e.srcElement;
-                if(e['path'][0].tagName !== 'LEGEND') return;
+                //if(e['path'][0].tagName !== 'LEGEND') return;
                 //const propName = srcEl['name'];
                 const childPropsEditor = <any>srcEl as IXtalPropsProperties;
                 const item = e['model'].item;

@@ -29,6 +29,10 @@ var xtal;
                             type: Object,
                             observer: 'onPropsChange'
                         },
+                        expanded: {
+                            type: Boolean,
+                            notify: true
+                        },
                         polymerProps: {
                             type: Object,
                             observer: 'onPropsChange'
@@ -95,10 +99,12 @@ var xtal;
                         });
                     }
                 }
-                toggleViewObjectProperty(e) {
+                toggleView() {
+                    this.expanded = !this.expanded;
+                }
+                childToggled(e) {
                     const srcEl = e.srcElement;
-                    if (e['path'][0].tagName !== 'LEGEND')
-                        return;
+                    //if(e['path'][0].tagName !== 'LEGEND') return;
                     //const propName = srcEl['name'];
                     const childPropsEditor = srcEl;
                     const item = e['model'].item;
