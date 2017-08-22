@@ -99,6 +99,9 @@ var xtal;
                         });
                     }
                 }
+                close() {
+                    this.style.display = 'none';
+                }
                 updateInput(e) {
                     const item = e.srcElement['item'];
                     this.watch[item.name] = e.srcElement['value'];

@@ -18,6 +18,9 @@
     <fieldset>
       <legend id="legend" on-click="toggleView">
         [[expandText]] [[name]]
+        <template is="dom-if" if="[[debug]]">
+          <button on-click="close">Close</button>
+        </template>
       </legend>
       <template is="dom-repeat" items="[[bindableProps]]">
         <div class="primitive prop">

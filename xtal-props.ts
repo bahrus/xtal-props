@@ -125,6 +125,9 @@ module xtal.elements {
                     })
                 }
             }
+            close(){
+                this.style.display = 'none';
+            }
             updateInput(e: Event){
                 const item = e.srcElement['item'];
                 this.watch[item.name] = e.srcElement['value'];
