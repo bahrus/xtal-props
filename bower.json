@@ -9,7 +9,8 @@
     "paper-input": "PolymerElements/paper-input#^2.0.1",
     "if-diff": "bahrus/if-diff#^0.0.3",
     "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.1",
-    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0"
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
+    "xtal-sip": "bahrus/xtal-sip#^0.0.12"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

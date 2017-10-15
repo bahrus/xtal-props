@@ -11,7 +11,8 @@
 
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../xtal-props.html">
+  <!-- <link rel="import" href="../xtal-props.html"> -->
+  <link rel="import" href="../../xtal-sip/xtal-sip.html">
   <link rel="import" href="../../polymer/polymer-element.html">
 
   <custom-style>
@@ -34,7 +35,11 @@
             <div>Is Happy: [[isHappy]]</div>
             <div>Age: [[age]]</div>
             Modify message: <input type="textbox" value="{{message::input}}">
-            <xtal-props name="My Component" id="myProps"></xtal-props>
+            <div>
+              <xtal-sip href="web_component_ref.json"></xtal-sip>
+              <xtal-props name="My Component" id="myProps" upgrade-me></xtal-props>
+            </div>
+ 
           </template>
         </dom-module>
         <script>
