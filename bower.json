@@ -9,7 +9,6 @@
     "paper-input": "PolymerElements/paper-input#^2.0.1",
     "if-diff": "bahrus/if-diff#^0.0.3",
     "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.1",
-    "xtal-in": "bahrus/xtal-in#^0.0.1",
     "paper-dialog": "PolymerElements/paper-dialog#^2.0.0"
   },
   "devDependencies": {
