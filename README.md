@@ -1,7 +1,7 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/bahrus/if-diff)
 # \<xtal-props\>
 
-View / Edit an object.  Debug web components
+View / Edit an object.  Debug web components.
 
 \<xtal-props\> solves a number of use cases:
 
@@ -22,6 +22,8 @@ View / Edit an object.  Debug web components
 - [ ] Provide similar support for other custom element libraries.
 - [ ] Debug support:
   - [x] Open up an object editor / viewer after ctrl-clicking on a custom element.
+  - [x] ctrl-clicking on a custom element logs the constructor to the console, allowing quick navigation to the function definition.
+  - [ ] ctrl-clicking on a custom element copies the css path to the clipboard, which allows adding conditional breakpoints.
   - [x] Readonly support for string, boolean, number properties (Polymer components only).
   - [x] Readonly support nested child object properties.
   - [x] Readonly support for array properties.

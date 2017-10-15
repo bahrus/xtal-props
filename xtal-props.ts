@@ -114,8 +114,8 @@ module xtal.elements {
 
                             if (tn.indexOf('-') > -1) {
                                 const CE_ProtoType = customElements.get(tn);
+                                console.log(CE_ProtoType);
                                 if (CE_ProtoType) {
-                                    console.log('enableDebug');
                                     this.name = tn;
                                     _this.displayDebugView(e, CE_ProtoType);
                                 }
