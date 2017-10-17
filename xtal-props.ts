@@ -109,7 +109,7 @@ module xtal.elements {
                     this.style.display = 'none';
                     const _this = this;
                     document.body.addEventListener('click', e => {
-                        if (e.ctrlKey) {
+                        if (e.ctrlKey || e.metaKey ) {
                             const tn = e.srcElement.tagName.toLowerCase();
 
                             if (tn.indexOf('-') > -1) {
