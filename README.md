@@ -22,7 +22,7 @@ View / Edit an object.  Debug web components.
 - [ ] Provide similar support for other custom element libraries.
 - [ ] Debug support:
   - [x] Open up an object editor / viewer after ctrl-clicking on a custom element.
-  - [x] ctrl-clicking on a custom element logs the constructor to the console, allowing quick navigation to the function definition.
+  - [x] ctrl-clicking (command-click on a Mac) on a custom element logs the constructor to the console, allowing quick navigation to the function definition.
   - [ ] ctrl-clicking on a custom element copies the css path to the clipboard, which allows adding conditional breakpoints.
   - [x] Readonly support for string, boolean, number properties (Polymer components only).
   - [x] Readonly support nested child object properties.
