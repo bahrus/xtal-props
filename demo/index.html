@@ -11,7 +11,7 @@
 
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <!-- <link rel="import" href="../xtal-props.html"> -->
+  <link rel="import" href="../xtal-props.html">
   <link rel="import" href="../../xtal-sip/xtal-sip.html">
   <link rel="import" href="../../polymer/polymer-element.html">
 
@@ -36,8 +36,8 @@
             <div>Age: [[age]]</div>
             Modify message: <input type="textbox" value="{{message::input}}">
             <div>
-              <xtal-sip href="web_component_ref.json"></xtal-sip>
-              <xtal-props name="My Component" id="myProps" upgrade-me></xtal-props>
+              <!-- <xtal-sip href="web_component_ref.json"></xtal-sip> -->
+              <xtal-props name="My Component" id="myProps"></xtal-props>
             </div>
  
           </template>
@@ -114,7 +114,7 @@
               super.ready();
               //this.$.myProps.name = 'my-component';
               this.$.myProps.observe = this;
-              this.$.myProps.polymerProps = MyComponent.properties;
+              //this.$.myProps.polymerProps = MyComponent.properties;
             }
           }
           customElements.define(MyComponent.is, MyComponent);

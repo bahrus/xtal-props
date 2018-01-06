@@ -79,7 +79,9 @@ module xtal.elements {
                 }
             }
             onPropsChange() {
-                if(!this.polymerProps || !this.observe) return;
+                //if(!this.polymerProps || !this.observe) return;
+                if(!this.observe) return;
+                if(!this.polymerProps) this.polymerProps = this.observe.constructor.properties;
                 const bindableProps : PropType[] = [];
                 for(const key in this.polymerProps){
                     const polyProp = this.polymerProps[key] as ExtendedPolymerPropType;

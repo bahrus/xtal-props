@@ -55,8 +55,11 @@ var xtal;
                     }
                 }
                 onPropsChange() {
-                    if (!this.polymerProps || !this.observe)
+                    //if(!this.polymerProps || !this.observe) return;
+                    if (!this.observe)
                         return;
+                    if (!this.polymerProps)
+                        this.polymerProps = this.observe.constructor.properties;
                     const bindableProps = [];
                     for (const key in this.polymerProps) {
                         const polyProp = this.polymerProps[key];

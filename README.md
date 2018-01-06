@@ -1,12 +1,43 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/bahrus/if-diff)
 # \<xtal-props\>
 
-View / Edit an object.  Debug web components.
+## View / Edit a Polymer web component.  Debug polymer web components.
 
 \<xtal-props\> solves a number of use cases:
 
 * Rapid prototyping via Property Editor.  Often we define a nice model for an object, and we want to start testing the model right away, without devoting time to building the UI.  Or we want to rapidly build a number of admin screens, and don't want to *ever* devote much tender loving care to building and maintaining highly customized forms to edit the objects.  This component will automatically generate a UI based on the Polymer properties definition.
-*  Chrome's debugging support for custom elements could be greatly improved.  In particular, being able to quickly inspect a custom element and see / modify the custom properties associated with it, is not (yet?) available on Chrome.  Debugging on browsers, like IE11 ,that don't natively support custom elements is considerably worse.  This component helps debugging in those environments.
+*  Debugging.  Be able to quickly inspect a custom element and see / modify the custom properties associated with it. 
+
+## Syntax for debugging
+
+To allow opening the property editor on ctrl+click, add the following markup:
+
+```html
+<xtal-props debug></xtal-props>
+```
+
+## Syntax for auto generating a UI 
+
+When defining a Polymer custom element (say "my-component"),  just create the static properties, and place the following inside the template:
+
+```html
+<dom-module id="my-component">
+  <template>
+    <xtal-props></xtal-props>
+  </template>
+</dom-module>
+```
+
+and add the following ready method:
+
+```JavaScript
+ready() {
+  super.ready();
+  //this.$.myProps.name = 'my-component';
+  const xtalProps = this.shadowRoot.querySelector('xtal-props');
+  xtalProps.observe = this;
+}
+```
 
 ### List of features:
 
