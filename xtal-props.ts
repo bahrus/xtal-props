@@ -160,19 +160,11 @@ module xtal.elements {
                 this.expanded = !this.expanded;
             }
             childToggled(e: Event){
-                const srcEl = e.srcElement;
-                //if(e['path'][0].tagName !== 'LEGEND') return;
-                //const propName = srcEl['name'];
+                const srcEl = e.srcElement || e.target;
                 const childPropsEditor = <any>srcEl as IXtalPropsProperties;
                 const item = e['model'].item;
                 const polymerProps = this.polymerProps[item.name];
                 if(polymerProps['_isExpanded']){
-                    console.log('deleting watch and bindableProps');
-                    //delete childPropsEditor.watch;
-                    //delete childPropsEditor.bindableProps;
-                    // if(childPropsEditor.bindableProps){
-                    //     childPropsEditor['splice']('bindableProps', 0, childPropsEditor.bindableProps['length']);
-                    // }
                     childPropsEditor.bindableProps = null;
                     childPropsEditor.observe = null;
                     polymerProps['_isExpanded'] = false;
@@ -180,9 +172,6 @@ module xtal.elements {
                     childPropsEditor.observe = item.val;
                     polymerProps['_isExpanded'] = true;
                 }
-
-                
-                
                 childPropsEditor.polymerProps = polymerProps['_properties'];
             }
         }
