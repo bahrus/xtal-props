@@ -25,7 +25,7 @@ var xtal;
                         /**
                         * The expression that points to an object to edit.
                         */
-                        watch: {
+                        observe: {
                             type: Object,
                             observer: 'onPropsChange'
                         },
@@ -55,14 +55,14 @@ var xtal;
                     }
                 }
                 onPropsChange() {
-                    if (!this.polymerProps || !this.watch)
+                    if (!this.polymerProps || !this.observe)
                         return;
                     const bindableProps = [];
                     for (const key in this.polymerProps) {
                         const polyProp = this.polymerProps[key];
                         const newProp = {
                             name: key,
-                            val: this.watch[key],
+                            val: this.observe[key],
                             type: polyProp.type.name,
                             expandText: polyProp.expandText,
                             label: polyProp.label || key,
@@ -77,7 +77,7 @@ var xtal;
                     this.style.display = 'block';
                     const polyProps = CE_ProtoType.properties;
                     const ce = e.srcElement;
-                    this.watch = ce;
+                    this.observe = ce;
                     this.polymerProps = polyProps;
                 }
                 onEnableDebugging() {
@@ -104,12 +104,12 @@ var xtal;
                 }
                 updateInput(e) {
                     const item = e.srcElement['item'];
-                    this.watch[item.name] = e.srcElement['value'];
+                    this.observe[item.name] = e.srcElement['value'];
                     //debugger;
                 }
                 updateBoolean(e) {
                     const item = e.srcElement['item'];
-                    this.watch[item.name] = e.srcElement['checked'];
+                    this.observe[item.name] = e.srcElement['checked'];
                     //debugger;
                 }
                 // updateNumber(e: Event){
@@ -150,11 +150,11 @@ var xtal;
                         //     childPropsEditor['splice']('bindableProps', 0, childPropsEditor.bindableProps['length']);
                         // }
                         childPropsEditor.bindableProps = null;
-                        childPropsEditor.watch = null;
+                        childPropsEditor.observe = null;
                         polymerProps['_isExpanded'] = false;
                     }
                     else {
-                        childPropsEditor.watch = item.val;
+                        childPropsEditor.observe = item.val;
                         polymerProps['_isExpanded'] = true;
                     }
                     childPropsEditor.polymerProps = polymerProps['_properties'];

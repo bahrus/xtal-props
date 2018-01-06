@@ -15,7 +15,7 @@ module xtal.elements {
         expanded: boolean | polymer.PropObjectType,
         name: string | polymer.PropObjectType,
         expandText: string | polymer.PropObjectType,
-        watch: any | polymer.PropObjectType,
+        observe: any | polymer.PropObjectType,
         polymerProps: { [key: string]: polymer.PropObjectType } | polymer.PropObjectType
         bindableProps: PropType[] | polymer.PropObjectType,
     }
@@ -37,7 +37,7 @@ module xtal.elements {
             *
             * @event toggle-view
             */
-            debug: boolean; watch: any; bindableProps: PropType[]; name: string; polymerProps: { [key: string]: polymer.PropObjectType };
+            debug: boolean; observe: any; bindableProps: PropType[]; name: string; polymerProps: { [key: string]: polymer.PropObjectType };
             expandText: string; expanded: boolean;
             static get is() { return 'xtal-props'; }
             static get properties(): IXtalPropsProperties {
@@ -49,7 +49,7 @@ module xtal.elements {
                     /**
                     * The expression that points to an object to edit.
                     */
-                    watch: {
+                    observe: {
                         type: Object,
                         observer: 'onPropsChange'
                     },
@@ -79,13 +79,13 @@ module xtal.elements {
                 }
             }
             onPropsChange() {
-                if(!this.polymerProps || !this.watch) return;
+                if(!this.polymerProps || !this.observe) return;
                 const bindableProps : PropType[] = [];
                 for(const key in this.polymerProps){
                     const polyProp = this.polymerProps[key] as ExtendedPolymerPropType;
                     const newProp = {
                         name: key,
-                        val: this.watch[key],
+                        val: this.observe[key],
                         type: polyProp.type.name,
                         expandText: polyProp.expandText,
                         label: polyProp.label || key,
@@ -100,7 +100,7 @@ module xtal.elements {
                 this.style.display = 'block';
                 const polyProps = CE_ProtoType.properties as { [key: string]: polymer.PropObjectType };
                 const ce = e.srcElement;
-                this.watch = ce;
+                this.observe = ce;
                 this.polymerProps = polyProps;
 
             }
@@ -130,12 +130,12 @@ module xtal.elements {
             }
             updateInput(e: Event){
                 const item = e.srcElement['item'];
-                this.watch[item.name] = e.srcElement['value'];
+                this.observe[item.name] = e.srcElement['value'];
                 //debugger;
             }
             updateBoolean(e: Event){
                 const item = e.srcElement['item'];
-                this.watch[item.name] = e.srcElement['checked'];
+                this.observe[item.name] = e.srcElement['checked'];
                 //debugger;
             }
             // updateNumber(e: Event){
@@ -174,10 +174,10 @@ module xtal.elements {
                     //     childPropsEditor['splice']('bindableProps', 0, childPropsEditor.bindableProps['length']);
                     // }
                     childPropsEditor.bindableProps = null;
-                    childPropsEditor.watch = null;
+                    childPropsEditor.observe = null;
                     polymerProps['_isExpanded'] = false;
                 }else{
-                    childPropsEditor.watch = item.val;
+                    childPropsEditor.observe = item.val;
                     polymerProps['_isExpanded'] = true;
                 }
 
