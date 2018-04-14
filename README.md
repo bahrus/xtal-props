@@ -20,7 +20,7 @@ To allow opening the property editor on ctrl+click, add the following markup:
 
 Rob Dodson pointed out at the last Polymer summit that reflecting primitive (string, boolean, numeric) properties to attributes (and vice versa), makes debugging much easier (especially for Chrome, where attribute changes flash as they change).  I agree.
 
-There is also now a wonderful [Polymer Inspector Chrome Extension](https://chrome.google.com/webstore/detail/polyspector/naoehbibkfilaolkmfiehggkfjndlhpd?hl=en).
+There is also now a wonderful [Polymer Inspector Chrome Extension](https://chrome.google.com/webstore/detail/polyspector/naoehbibkfilaolkmfiehggkfjndlhpd?hl=en), and one for [Stencil](https://chrome.google.com/webstore/detail/stencil-inspector/komnnoelcbjpjfnbhmdpgmlbklmicmdi).  Hopefully we'll see one soon that works with and and all web components.
 
 Unfortunately, this won't help with the worst case browser scneario:  IE11 / Edge.
 
