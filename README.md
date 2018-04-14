@@ -16,6 +16,18 @@ To allow opening the property editor on ctrl+click, add the following markup:
 <xtal-props debug></xtal-props>
 ```
 
+## Some additional comments on debugging
+
+Rob Dodson pointed out at the last Polymer summit that reflecting primitive (string, boolean, numeric) properties to attributes (and vice versa), makes debugging much easier (especially for Chrome, where attribute changes flash as they change).  I agree.
+
+There is also now a wonderful [Polymer Inspector Chrome Extension[(https://chrome.google.com/webstore/detail/polyspector/naoehbibkfilaolkmfiehggkfjndlhpd?hl=en).
+
+Unfortunately, this won't help with the worst case browser scneario:  IE11 / Edge.
+
+With these browsers, inspecting an element just produces a white, blank tree.
+
+I recommend trying out [https://github.com/bahrus/xtal-shell]($hell.js) to help with those browser, from yours truly.  Feedback welcome.
+
 ## Syntax for auto generating a UI 
 
 When defining a Polymer custom element (say "my-component"),  just create the static properties, and place the following inside the template:
