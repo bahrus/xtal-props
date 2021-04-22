@@ -52,19 +52,14 @@ const displayCategory: XtalProp = {
 const mousePointerCategory: XtalProp = {
   category: 'Mouse pointer'
 };
+const boolDisplayCategory: XtalProp = {
+  ...boolType,
+  ...displayCategory
+};
 const propConfig: XtalPropsConfig<MyAdminScreen> = {
-  enlargeText: {
-    ...boolType,
-    ...displayCategory
-  },
-  everythingBigger: {
-    ...boolType,
-    ...displayCategory
-  },
-  everythingBrighter: {
-    ...boolType,
-    ...displayCategory
-  },
+  enlargeText: boolDisplayCategory
+  everythingBigger: boolDisplayCategory
+  everythingBrighter: boolDisplayCategory
   pointerSize: {
     type: Number,
     ...mousePointerCategory
