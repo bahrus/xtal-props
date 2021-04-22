@@ -1,96 +1,41 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/bahrus/xtal-props)
 # \<xtal-props\>
 
-## View / Edit a Polymer web component.  Debug polymer web components.
+## Scaffold a UI from property "reactions"
 
-\<xtal-props\> solves a number of use cases:
+The .net native windows (?) component called ["PropertyGrid"](https://www.c-sharpcorner.com/uploadfile/witnes/using-propertygrid-in-net/) allows the developers to create POCO (plain old C# objects) that represent the business functionality, then pass instances of the class to the property grid via the selectedObject property.
 
-* Rapid prototyping via Property Editor.  Often we define a nice model for an object, and we want to start testing the model right away, without devoting time to building the UI.  Or we want to rapidly build a number of admin screens, and don't want to *ever* devote much tender loving care to building and maintaining highly customized forms to edit the objects.  This component will automatically generate a UI based on the Polymer properties definition.
-*  Debugging.  Be able to quickly inspect a custom element and see / modify the custom properties associated with it. 
+This allows Microsoft and others to quickly build native apps, like admin screens, where the target audience is technical folks who are comfortable editing data using what is basically a glorified object editor.  This allows for rapid development of powerful OS enhancements.
 
-## Syntax for debugging
+In fact, Microsoft also uses the same component for debugging purposes.
 
-To allow opening the property editor on ctrl+click, add the following markup:
+This component is designed to harness some of the same use cases as the PropertyGrid.
 
-```html
-<xtal-props debug></xtal-props>
-```
+The way developers can customize how the PropertyGrid treats properties is via .net attributes, which are quite similar (but less dynamic, more declarative) to the decorator proposal.
 
-## Some additional comments on debugging
+Examples of customizations are:
 
-Rob Dodson pointed out at the last Polymer summit that reflecting primitive (string, boolean, numeric) properties to attributes (and vice versa), makes debugging much easier (especially for Chrome, where attribute changes flash as they change).  I agree.
+1. Providing a description for the property.
+2.  Grouping properties into categories.
+3.  Specifying custom editors for individual properties.
 
-There is also now a wonderful [Polymer Inspector Chrome Extension](https://chrome.google.com/webstore/detail/polyspector/naoehbibkfilaolkmfiehggkfjndlhpd?hl=en), and one for [Stencil](https://chrome.google.com/webstore/detail/stencil-inspector/komnnoelcbjpjfnbhmdpgmlbklmicmdi).  Hopefully we'll see one soon that works with and and all web components.
+However, the decorator proposal has been sitting in limbo for quite some time, thus requiring a proprietary compiling tool of some sort.
 
-Unfortunately, this won't help with the worst case browser scneario:  IE11 / Edge.
+This component would probably switch to the decorator approach should they ever become standardized into EcmaScript.
 
-With these browsers, inspecting an element just produces a white, blank tree.
-
-I recommend trying out [$hell.js](https://github.com/bahrus/xtal-shell) to help with those browsers, from yours truly.  Feedback welcome.
-
-## Syntax for auto generating a UI 
-
-When defining a Polymer custom element (say "my-component"),  just create the static properties, and place the following inside the template:
-
-```html
-<dom-module id="my-component">
-  <template>
-    <xtal-props></xtal-props>
-  </template>
-</dom-module>
-```
-
-and add the following ready method:
-
-```JavaScript
-ready() {
-  super.ready();
-  //this.$.myProps.name = 'my-component';
-  const xtalProps = this.shadowRoot.querySelector('xtal-props');
-  xtalProps.observe = this;
-}
-```
+For now, this component will use "Reactive property destructuring" to specify similar types of settings.
 
 ### List of features:
 
-- [ ] Auto generate an interface based on the static polymer properties.
-  - [x] Readonly support for string, boolean, number properties (Polymer components only).
-  - [x] Readonly support nested child object properties.
-  - [x] Readonly support for array properties.
-  - [x] Edit support for string property.
-  - [x] Edit support for  boolean property., 
-  - [x] Edit support for number property.
-  - [x] Edit support nested child object properties.
+- [ ] Auto generate an interface based on prop reaction definitions.
+  - [] Readonly support for string, boolean, number properties (Polymer components only).
+  - [] Readonly support nested child object properties.
+  - [] Readonly support for array properties.
+  - [] Edit support for string property.
+  - [] Edit support for  boolean property., 
+  - [] Edit support for number property.
+  - [] Edit support nested child object properties.
   - [ ] Edit support for array properties.
 - [ ] Provide similar support for other custom element libraries.
-- [ ] Debug support:
-  - [x] Open up an object editor / viewer after ctrl-clicking on a custom element.
-  - [x] ctrl-clicking (command-click on a Mac) on a custom element logs the constructor to the console, allowing quick navigation to the function definition.
-  - [ ] ctrl-clicking on a custom element copies the css path to the clipboard, which allows adding conditional breakpoints.
-  - [x] Readonly support for string, boolean, number properties (Polymer components only).
-  - [x] Readonly support nested child object properties.
-  - [x] Readonly support for array properties.
-  - [x] Edit support for string property.
-  - [x] Edit support for boolean property. 
-  - [x] Edit support for number property.
-  - [x] Edit support nested child object properties.
-  - [ ] Edit support for array properties.
-  - [ ] Support closing debug panel
 
-## Install the Polymer-CLI
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
-
-```
-$ polymer serve
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
