@@ -25,6 +25,30 @@ This component would probably switch to the decorator approach should they ever 
 
 For now, this component will use "Reactive property destructuring" to specify similar types of settings.
 
+For example, suppose we define a JS class:
+
+```JavaScript
+export class MyAdminScreen {
+  enlargeText: boolean;
+  everythingBigger: boolean;
+  everythingBrighter: boolean;
+  pointerSize: number;
+  touchFeedback: boolean;
+}
+```
+
+We want to indicate that the first three properties should be grouped under "Display" and the last two under "Mouse pointer" category.
+
+We can do that with expressions such as:
+
+```JavaScript
+const displayCategory = ({enlargeText, everythingBigger, everythingBrighter}) => 'Display';
+const mouseCategory = ({pointerSize, touchFeedback}) => "Mouse pointer";
+myXtalProps.PropConfig = [displayCategory, mouseCategory]
+```
+
+
+
 ### List of features:
 
 - [ ] Auto generate an interface based on prop reaction definitions.
