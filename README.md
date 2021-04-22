@@ -3,7 +3,7 @@
 
 ## Scaffold a UI from property "reactions"
 
-The .net native windows (?) component called ["PropertyGrid"](https://www.c-sharpcorner.com/uploadfile/witnes/using-propertygrid-in-net/) allows the developers to create POCO (plain old C# objects) that represent the business functionality, then pass instances of the class to the property grid via the selectedObject property.
+The .net native windows (?) component called ["PropertyGrid"](https://www.c-sharpcorner.com/uploadfile/witnes/using-propertygrid-in-net/) allows developers to create POCO's (plain old C# objects) that represent the business functionality, then pass instances of that class to the property grid via the selectedObject property.
 
 This allows Microsoft and others to quickly build native apps, like admin screens, where the target audience is technical folks who are comfortable editing data using what is basically a glorified object editor.  This allows for rapid development of powerful OS enhancements.
 
@@ -15,7 +15,7 @@ The way developers can customize how the PropertyGrid treats properties is via .
 
 Examples of customizations are:
 
-1. Providing a description for the property.
+1.  Providing a description for the property.
 2.  Grouping properties into categories.
 3.  Specifying custom editors for individual properties.
 
@@ -23,7 +23,7 @@ However, the decorator proposal has been sitting in limbo for quite some time, t
 
 This component would probably switch to the decorator approach should they ever become standardized into EcmaScript.
 
-For now, this component will use "Reactive property destructuring" to specify similar types of settings.
+For now, this component will us a separate JSON-like configuration object.
 
 For example, suppose we define a JS class:
 
@@ -42,9 +42,40 @@ We want to indicate that the first three properties should be grouped under "Dis
 We can do that with expressions such as:
 
 ```JavaScript
-const displayCategory = ({enlargeText, everythingBigger, everythingBrighter}) => 'Display';
-const mouseCategory = ({pointerSize, touchFeedback}) => "Mouse pointer";
-myXtalProps.PropConfig = [displayCategory, mouseCategory]
+
+const boolType: XtalProp = {
+  type: Boolean,
+};
+const displayCategory: XtalProp = {
+  category: 'Display'
+};
+const mousePointerCategory: XtalProp = {
+  category: 'Mouse pointer'
+};
+const propConfig: XtalPropsConfig<MyAdminScreen> = {
+  enlargeText: {
+    ...boolType,
+    ...displayCategory
+  },
+  everythingBigger: {
+    ...boolType,
+    ...displayCategory
+  },
+  everythingBrighter: {
+    ...boolType,
+    ...displayCategory
+  },
+  pointerSize: {
+    type: Number,
+    ...mousePointerCategory
+  },
+  touchFeedback: {
+    ...boolType,
+    ...mousePointerCategory
+  }
+};
+myXtalPropsInstance.config = propConfig;
+myXtalPropsInstance.selectedObject = myAdminScreenInstance;
 ```
 
 
