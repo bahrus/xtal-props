@@ -1,9 +1,9 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/bahrus/xtal-props)
 # \<xtal-props\>
 
-## Scaffold a UI from property "reactions"
+## Scaffold a UI from property configurations
 
-The .net native windows (?) component called ["PropertyGrid"](https://www.c-sharpcorner.com/uploadfile/witnes/using-propertygrid-in-net/) allows developers to create POCO's (plain old C# objects) that represent the business functionality, then pass instances of that class to the property grid via the selectedObject property.
+The .net native windows (?) component called ["PropertyGrid"](https://www.c-sharpcorner.com/uploadfile/witnes/using-propertygrid-in-net/) allows developers to create POCO's (plain old C# objects) that represent the business functionality, then pass instances of that class to the PropertyGrid component via the selectedObject property.
 
 This allows Microsoft and others to quickly build native apps, like admin screens, where the target audience is technical folks who are comfortable editing data using what is basically a glorified object editor.  This allows for rapid development of powerful OS enhancements.
 
@@ -21,9 +21,9 @@ Examples of customizations are:
 
 However, the decorator proposal has been sitting in limbo for quite some time, thus requiring a proprietary compiling tool of some sort.
 
-This component would probably switch to the decorator approach should they ever become standardized into EcmaScript.
+This component would probably switch to the decorator approach should that ever become standardized into EcmaScript.
 
-For now, this component will us a separate JSON-like configuration object.
+For now, this component will use a separate JSON-like configuration object.
 
 For example, suppose we define a JS class:
 
@@ -77,8 +77,9 @@ myXtalPropsInstance.selectedObject = myAdminScreenInstance;
 
 ### List of features:
 
-- [ ] Auto generate an interface based on prop reaction definitions.
-  - [] Readonly support for string, boolean, number properties (Polymer components only).
+- [ ] Auto generate an interface based on prop config definitions.
+  - [] Readonly support for string, boolean, number properties.
+  - [] Support multiple design libraries via import maps.
   - [] Readonly support nested child object properties.
   - [] Readonly support for array properties.
   - [] Edit support for string property.
@@ -86,6 +87,6 @@ myXtalPropsInstance.selectedObject = myAdminScreenInstance;
   - [] Edit support for number property.
   - [] Edit support nested child object properties.
   - [ ] Edit support for array properties.
-- [ ] Provide similar support for other custom element libraries.
+
 
 
