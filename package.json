@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "description": "[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/bahrus/xtal-props)\r # \\<xtal-props\\>",
   "main": "index.js",
-  "directories": {
-    "test": "test"
+  "dependencies": {
+    "xtal-element": "0.0.400",
+    "sceadu-fax": "0.0.1",
+    "ref-to": "0.0.6",
+    "templ-model": "0.0.3",
+    "slot-nik": "0.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,1 +1,1 @@
-import '' from 'xtal-element/lib/XtalCore.js';
+import {xc} from 'xtal-element/lib/XtalCore.js';
