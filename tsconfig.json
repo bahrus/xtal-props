@@ -3,11 +3,14 @@
 		"target": "esnext",
 		"module":"esnext",
 		"sourceMap": false,
-		"experimentalDecorators": true,
+		"experimentalDecorators": false,
 		"newLine": "LF",
 		"strict": true,
 		"watch": true
 	},
+	"files": [
+		"xtal-props.ts"
+	],
 	"exclude":[
 		"node_modules"
 	]
