@@ -32,5 +32,6 @@ const baseObjProp: PropDef = {
 const propDefMap: PropDefMap<XtalProps> = {
     selectedObject: baseObjProp,
     uiConfig: baseObjProp,
+    uiConfigByCategory: baseObjProp,
 };
 xc.define(XtalProps);

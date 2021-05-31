@@ -89,4 +89,29 @@ myXtalPropsInstance.selectedObject = myAdminScreenInstance;
   - [ ] Edit support for array properties.
 
 
+### Implementation Ramblings
 
+```html
+<template id=num-field>
+  <label>{{description}}</label>
+  <input type=number>
+</template>
+
+<template id=enum-field>
+</template>
+
+<template id=categoryHolder>
+  <fieldset>
+    <legend>{{myLegend}}</legend>
+  </fieldset>
+  <li-bid list='[{"templort":"num-field"}]'>
+
+  </li-bid>
+</template>
+```
+
+```html
+<li-bid template-id=categoryHolder list='[{"myLegend": "Legend 1."}]'>
+  
+</li-bid>
+```
