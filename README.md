@@ -106,7 +106,7 @@ If there are multiple instances of this component, each instance can have its ow
 
 We can set those common settings in bulk using [be-hydrating](https://github.com/bahrus/be-hydrating)
 
-
+An alternative, less dynamic approach would be to subclass xtal-props for specific use cases, and set the default configuration in the constructor.
 
 ### List of features:
 
